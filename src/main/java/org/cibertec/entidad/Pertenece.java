@@ -15,7 +15,7 @@ import lombok.Data;
 public class Pertenece {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "PERTENECE_ID")
 	int codigo; 
 	

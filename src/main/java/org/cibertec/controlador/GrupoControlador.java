@@ -5,40 +5,44 @@ import java.util.List;
 import org.cibertec.entidad.Grupo;
 import org.cibertec.servicios.GrupoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/Grupo")
 public class GrupoControlador {
 
 	@Autowired
 	private GrupoServicio gruposervicio;
 	
-	@RequestMapping(path = "/Grupo/lista", method = RequestMethod.GET)
+	@GetMapping("/lista")
 	public List<Grupo> lista() {
 		return gruposervicio.ListarGrupo();
 	}	
 	
-	@RequestMapping(path = "/Grupo/{codigo}", method = RequestMethod.GET)
-	public  Grupo List(@PathVariable(name = "codigo", required = true) Integer cod) {
+	@GetMapping("/{codigo}")
+	public  Grupo List(@PathVariable("codigo") Integer cod) {
 		return gruposervicio.encontrarGrupo(cod);
 	}
 	
-	@RequestMapping(path = "/Grupo", method = RequestMethod.POST)
+	@PostMapping("/Registrar")
 	public void registrar(@RequestBody Grupo grupo) {
 		gruposervicio.guardar(grupo);
 	}
 	
-	@RequestMapping(path = "/Grupo", method = RequestMethod.PUT)
+	@PutMapping("/Actualizar")
 	public void actualizar(@RequestBody Grupo grupo) {
 		gruposervicio.guardar(grupo);
 	}
 	
-	@RequestMapping(path = "/Grupo/{codigo}", method = RequestMethod.DELETE)
-	public void eliminar(@PathVariable(name = "codigo", required = true) Integer cod) {
+	@DeleteMapping("/Eliminar/{codigo}")
+	public void eliminar(@PathVariable("codigo") Integer cod) {
 		gruposervicio.eliminar(cod);
 	}
 	

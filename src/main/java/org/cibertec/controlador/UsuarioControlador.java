@@ -5,45 +5,49 @@ import java.util.List;
 import org.cibertec.entidad.Usuario;
 import org.cibertec.servicios.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/Usuario")
 public class UsuarioControlador {
 
 	@Autowired
 	private UsuarioServicio usuarioservicio;
 	
-	@RequestMapping(path = "/Usuario/lista", method = RequestMethod.GET)
+	@GetMapping("/lista")
 	public List<Usuario> lista() {
 		return usuarioservicio.ListarUsuario();
 	}	
 	
-	@RequestMapping(path = "/Usuario/{codigo}", method = RequestMethod.GET)
-	public  Usuario List(@PathVariable(name = "codigo", required = true) Integer cod) {
+	@GetMapping("/{codigo}")
+	public  Usuario List(@PathVariable("codigo") Integer cod) {
 		return usuarioservicio.encontrarUsuario(cod);
 	}
 	
-	@RequestMapping(path = "/Usuario", method = RequestMethod.POST)
+	@PostMapping("/Registrar")
 	public void registrar(@RequestBody Usuario usuario) {
 		usuarioservicio.guardar(usuario);
 	}
 	
-	@RequestMapping(path = "/Usuario", method = RequestMethod.PUT)
+	@PutMapping("/Actualizar")
 	public void actualizar(@RequestBody Usuario usuario) {
 		usuarioservicio.guardar(usuario);
 	}
 	
-	@RequestMapping(path = "/Usuario/{codigo}", method = RequestMethod.DELETE)
-	public void eliminar(@PathVariable(name = "codigo", required = true) Integer cod) {
+	@DeleteMapping("/Eliminar/{codigo}")
+	public void eliminar(@PathVariable("codigo") Integer cod) {
 		usuarioservicio.eliminar(cod);
 	}
 	
-	@RequestMapping(path = "/Usuario/Buscar/{correo}", method = RequestMethod.GET)
-	public Usuario buscar(@PathVariable(name = "correo", required = true) String correo) {
+	@GetMapping("/Buscar/{correo}")
+	public Usuario buscar(@PathVariable("correo") String correo) {
 		return usuarioservicio.buscarCorreo(correo);
 	}
 	

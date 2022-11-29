@@ -19,7 +19,7 @@ import lombok.Data;
 public class Mensaje {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "MENSAJE_ID")
 	int numero;
 	

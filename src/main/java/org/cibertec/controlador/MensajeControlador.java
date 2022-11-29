@@ -5,40 +5,44 @@ import java.util.List;
 import org.cibertec.entidad.Mensaje;
 import org.cibertec.servicios.MensajeServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/Mensaje")
 public class MensajeControlador {
 
 	@Autowired
 	private MensajeServicio mensajeservicio;
 	
-	@RequestMapping(path = "/Mensaje/lista", method = RequestMethod.GET)
+	@GetMapping("/lista")
 	public List<Mensaje> lista() {
 		return mensajeservicio.ListarServicio();
 	}	
 	
-	@RequestMapping(path = "/Mensaje/{codigo}", method = RequestMethod.GET)
-	public  Mensaje List(@PathVariable(name = "codigo", required = true) Integer cod) {
+	@GetMapping("/{codigo}")
+	public  Mensaje List(@PathVariable("codigo") Integer cod) {
 		return mensajeservicio.encontrarServicio(cod);
 	}
 	
-	@RequestMapping(path = "/Mensaje", method = RequestMethod.POST)
+	@PostMapping("/Registrar")
 	public void registrar(@RequestBody Mensaje mensaje) {
 		mensajeservicio.guardar(mensaje);
 	}
 	
-	@RequestMapping(path = "/Mensaje", method = RequestMethod.PUT)
+	@PutMapping("/Actualizar")
 	public void actualizar(@RequestBody Mensaje mensaje) {
 		mensajeservicio.guardar(mensaje);
 	}
 	
-	@RequestMapping(path = "/Mensaje/{codigo}", method = RequestMethod.DELETE)
-	public void eliminar(@PathVariable(name = "codigo", required = true) Integer cod) {
+	@DeleteMapping("/Eliminar/{codigo}")
+	public void eliminar(@PathVariable("codigo") Integer cod) {
 		mensajeservicio.eliminar(cod);
 	}
 	
