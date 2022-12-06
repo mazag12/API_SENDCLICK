@@ -21,15 +21,13 @@ public class Usuario {
 	@Column(name = "USUARIO_ID")
 	int usuario;
 	
-//	@Email
-	@Column(name = "USUARIO_CORREO")
-	String correo;
+	@Column(name = "USUARIO_NOMBRE")
+	String nombre;
 	
-//	@NotNull
 	@Column(name = "USUARIO_PASSWORD")
 	String contrasena;
 	
-	@Column(name = "USUARIO_NOMBRE")
-	String nombre;
+	@Column(name = "USUARIO_TELEFONO")
+	String telefono;
 
 }

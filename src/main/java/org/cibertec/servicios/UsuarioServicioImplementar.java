@@ -47,8 +47,8 @@ public class UsuarioServicioImplementar implements UsuarioServicio{
 
 	@Override
 	@Transactional(readOnly = true)
-	public Usuario buscarCorreo(String correo) {
-		return UsuarioRepository.findByCorreo(correo);
+	public Usuario buscarNombre(String nombre) {
+		return UsuarioRepository.findByNombre(nombre);
 	}
 
 }

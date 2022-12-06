@@ -48,9 +48,10 @@ public class UsuarioControlador {
 		usuarioservicio.eliminar(cod);
 	}
 	
-	@GetMapping("/Buscar/{correo}")
-	public Usuario buscar(@PathVariable("correo") String correo) {
-		return usuarioservicio.buscarCorreo(correo);
+	@GetMapping("/Buscar/{nombre}")
+	public Usuario buscar(@PathVariable("nombre") String nombre) {
+		return usuarioservicio.buscarNombre(nombre);
 	}
+	
 	
 }

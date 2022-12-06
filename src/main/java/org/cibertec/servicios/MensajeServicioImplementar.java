@@ -38,4 +38,14 @@ public class MensajeServicioImplementar implements MensajeServicio{
 		return mensajeRepository.findById(cod).orElse(null);
 	}
 
+	@Override
+	public Mensaje buscarTelefono(String telefono) {
+		return mensajeRepository.findByTelefono(telefono);
+	}
+
+	@Override
+	public Mensaje buscarNombre(String nombre) {
+		return mensajeRepository.findByNombre(nombre);
+	}
+
 }

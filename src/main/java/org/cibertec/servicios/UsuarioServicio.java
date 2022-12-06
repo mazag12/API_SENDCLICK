@@ -16,6 +16,6 @@ public interface UsuarioServicio {
 	
 	public Usuario encontrarUsuario(Integer cod);
 	
-	public Usuario buscarCorreo(String correo);
+	public Usuario buscarNombre(String nombre);
 	
 }

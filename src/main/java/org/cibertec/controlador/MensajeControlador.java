@@ -48,4 +48,14 @@ public class MensajeControlador {
 		mensajeservicio.eliminar(cod);
 	}
 	
+	@GetMapping("/telefono/{telefono}")
+	public void encontrarTelefono(@PathVariable("telefono") String telefono) {
+		mensajeservicio.buscarTelefono(telefono);
+	}
+	
+	@GetMapping("/nombre/{telefono}")
+	public void encontrarNombre(@PathVariable("telefono") String nombre) {
+		mensajeservicio.buscarNombre(nombre);
+	}
+	
 }

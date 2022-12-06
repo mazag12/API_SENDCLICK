@@ -16,4 +16,7 @@ public interface MensajeServicio {
 	
 	public Mensaje encontrarServicio(Integer cod);
 	
+	public Mensaje buscarTelefono(String telefono);
+	
+	public Mensaje buscarNombre(String nombre);
 }
